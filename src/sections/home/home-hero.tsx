@@ -189,8 +189,8 @@ export default function HomeHero() {
             textAlign: 'center',
           }}
         >
-          Start a <br />
-          New Project with
+          Enjoy Betting <br />
+          Enjoy Casino
         </Typography>
       </m.div>
 
@@ -204,7 +204,7 @@ export default function HomeHero() {
             repeat: Infinity,
           }}
         >
-          Minimal
+          PAALMIND
         </StyledTextGradient>
       </m.div>
 
