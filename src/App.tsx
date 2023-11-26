@@ -71,7 +71,7 @@ export default function App() {
             themeDirection: 'ltr', //  'rtl' | 'ltr'
             themeContrast: 'default', // 'default' | 'bold'
             themeLayout: 'vertical', // 'vertical' | 'horizontal' | 'mini'
-            themeColorPresets: 'purple', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
+            themeColorPresets: 'red', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
             themeStretch: false,
           }}
         >

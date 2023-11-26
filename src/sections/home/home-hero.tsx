@@ -210,12 +210,12 @@ export default function HomeHero() {
 
       <m.div variants={varFade().in}>
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-          The starting point for your next project is based on MUI.Easy customization Helps you
-          build apps faster and better.
+          With paalmind bot, users can enjoy sports betting and casino games.
+          Can swap assets and withdraw winning funds.
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().in}>
+      {/* <m.div variants={varFade().in}>
         <Stack
           spacing={0.75}
           direction="row"
@@ -277,9 +277,9 @@ export default function HomeHero() {
             Design Preview
           </Button>
         </Stack>
-      </m.div>
+      </m.div> */}
 
-      <Stack spacing={3} sx={{ textAlign: 'center' }}>
+      {/* <Stack spacing={3} sx={{ textAlign: 'center' }}>
         <m.div variants={varFade().in}>
           <Typography variant="overline" sx={{ opacity: 0.4 }}>
             Available For
@@ -297,7 +297,7 @@ export default function HomeHero() {
             </m.div>
           ))}
         </Stack>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 
