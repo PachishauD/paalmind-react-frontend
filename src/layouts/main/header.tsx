@@ -85,12 +85,12 @@ export default function Header() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
+          {/* {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />} */}
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
-            <Button variant="contained" target="_blank" rel="noopener" href={paths.minimalUI}>
+            {/* <Button variant="contained" target="_blank" rel="noopener" href={paths.minimalUI}>
               Purchase Now
-            </Button>
+            </Button> */}
 
             {mdUp && <LoginButton />}
 
