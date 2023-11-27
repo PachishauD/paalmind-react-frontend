@@ -62,8 +62,14 @@ export default function JwtLoginView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await login?.(defaultValues.email, defaultValues.password);
-      router.push(returnTo || PATH_AFTER_LOGIN);
+      if (data.email === "paalmind@gmail.com" && data.password  === "Pass!234"){
+        await login?.(defaultValues.email, defaultValues.password);
+        router.push(returnTo || PATH_AFTER_LOGIN);
+
+      }else{
+        reset()
+        setErrorMsg("Invalid Credentials");
+      }
     } catch (error) {
       console.error(error);
       reset();
