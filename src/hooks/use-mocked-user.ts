@@ -18,7 +18,7 @@ export function useMockedUser() {
     displayName: 'Steven(Admin)',
     email: 'paalmind@gmail.com',
     password: 'Pass!234',
-    photoURL: _mock.image.avatar(24),
+    photoURL: _mock.image.avatar(1),
     phoneNumber: '+40 777666555',
     country: 'United States',
     address: '90210 Broadway Blvd',
