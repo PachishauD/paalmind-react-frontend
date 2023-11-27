@@ -10,12 +10,13 @@ import { fNumber, fPercent } from 'src/utils/format-number';
 // components
 import Iconify from 'src/components/iconify';
 import Chart from 'src/components/chart';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 
 interface Props extends CardProps {
   title: string;
-  total: number;
+  total: number | string | ReactNode;
   percent: number;
   chart: {
     colors?: string[];
@@ -98,7 +99,7 @@ export default function AppWidgetSummary({ title, percent, total, chart, sx, uni
           </Typography>
         </Stack>
 
-        <Typography variant="h3">{unit}{fNumber(total)}</Typography>
+        <Typography variant="h3">{unit}{total}</Typography>
       </Box>
 
       <Chart type="bar" series={[{ data: series }]} options={chartOptions} width={60} height={36} />

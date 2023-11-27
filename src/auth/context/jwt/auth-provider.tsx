@@ -131,11 +131,8 @@ export function AuthProvider({ children }: Props) {
       email,
       password,
     };
-
     const res = await axios.post(endpoints.auth.login, data);
-
     const { accessToken, user } = res.data;
-
     setSession(accessToken);
 
     dispatch({

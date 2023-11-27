@@ -19,17 +19,19 @@ import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 import CustomPopover, { usePopover } from 'src/components/custom-popover';
 import { TableHeadCustom } from 'src/components/table';
+import { Skeleton } from '@mui/material';
+import _ from 'lodash';
 
 // ----------------------------------------------------------------------
 
 type RowProps = {
-  username: string,
-  wallet_address: string,
-  hash: string,
-  type: string,
-  amount: number,
-  token: string,
-  timestamp: string,
+  username: string;
+  wallet_address: string;
+  hash: string;
+  type: string;
+  amount: number;
+  token: string;
+  timestamp: string;
 };
 
 interface Props extends CardProps {
@@ -37,6 +39,7 @@ interface Props extends CardProps {
   subheader?: string;
   tableData: Array<any>;
   tableLabels: Array<any>;
+  transactionsLoading: boolean;
 }
 
 export default function AppNewInvoice({
@@ -44,6 +47,7 @@ export default function AppNewInvoice({
   subheader,
   tableData,
   tableLabels,
+  transactionsLoading,
   ...other
 }: Props) {
   console.log(tableData);
@@ -55,12 +59,25 @@ export default function AppNewInvoice({
         <Scrollbar>
           <Table sx={{ minWidth: 680 }}>
             <TableHeadCustom headLabel={tableLabels as any[]} />
-
-            <TableBody>
-              {tableData.map((row: any) => (
-                <AppNewInvoiceRow row={row} />
-              ))}
-            </TableBody>
+            {transactionsLoading ? (
+              <TableBody>
+                {[...Array(3)].map((array, i) => (
+                  <TableRow>
+                    {[...Array(7)].map((array1, j) => (
+                      <TableCell>
+                        <Skeleton variant="rectangular" animation="wave" />
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            ) : (
+              <TableBody>
+                {tableData.map((row: any) => (
+                  <AppNewInvoiceRow row={row} />
+                ))}
+              </TableBody>
+            )}
           </Table>
         </Scrollbar>
       </TableContainer>
@@ -80,8 +97,6 @@ export default function AppNewInvoice({
   );
 }
 
-
-
 // ----------------------------------------------------------------------
 
 // type AppNewInvoiceRowProps = {
@@ -89,7 +104,7 @@ export default function AppNewInvoice({
 // };
 
 interface NewProps {
-  row: Array<any>
+  row: Array<any>;
 }
 
 function AppNewInvoiceRow(props: NewProps) {

@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
+import { Skeleton } from '@mui/material';
 // hooks
 import { useMockedUser } from 'src/hooks/use-mocked-user';
 // _mock
@@ -37,7 +38,8 @@ export default function OverviewAppView() {
   }
   const [users, setUsers] = useState([]);
   const [transactions, setTransactions] = useState([]);
-
+  const [usersLoading, setUsersLoading] = useState(true);
+  const [transactionsLoading, setTransactionsLoading] = useState(true);
   const theme = useTheme();
 
   const settings = useSettingsContext();
@@ -68,6 +70,19 @@ export default function OverviewAppView() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (users.length === 0) {
+      setUsersLoading(true);
+    } else {
+      setUsersLoading(false);
+    }
+    if (transactions.length === 0) {
+      setTransactionsLoading(true);
+    } else {
+      setTransactionsLoading(false);
+    }
+  }, [users, transactions]);
+
   const numUsers = users.length;
   const numTransactions = transactions.length;
 
@@ -95,7 +110,7 @@ export default function OverviewAppView() {
           <AppWidgetSummary
             title="Total Active Users"
             percent={0.1}
-            total={numUsers}
+            total={usersLoading? <Skeleton width={100}/> : numUsers}
             chart={{
               series: [5, 18, 12, 51, 68, 11, 39, 37, 27, 20],
             }}
@@ -106,7 +121,7 @@ export default function OverviewAppView() {
           <AppWidgetSummary
             title="Total Transactions"
             percent={0.2}
-            total={numTransactions}
+            total={transactionsLoading? <Skeleton width={100}/> : numTransactions}
             chart={{
               colors: [theme.palette.info.light, theme.palette.info.main],
               series: [20, 41, 63, 33, 28, 35, 50, 46, 11, 26],
@@ -205,6 +220,7 @@ export default function OverviewAppView() {
               { id: 'timestamp', label: 'timestamp' },
               { id: '' },
             ]}
+            transactionsLoading={transactionsLoading}
           />
         </Grid>
 
